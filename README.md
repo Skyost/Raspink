@@ -76,7 +76,7 @@ Start Raspink by running the following command in the Raspink folder :
 python ./main.py
 ```
 
-You can combine it with `nohup` to leave it active in the background.
+With this command, the content is refreshed every five minutes. You can combine it with `nohup` to leave it active in the background.
 Good for you : I've already done the work !
 
 ```shell
