@@ -3,7 +3,7 @@
 Raspink is a little utility that allows to display various info
 on an eInk reader connected to a Raspberry Pi.
 
-<img src="https://github.com/Skyost/Raspink/raw/master/screenshot.png" width="30%" border="1"> <img src="https://github.com/Skyost/Raspink/raw/master/preview.gif" width="30%">
+<img src="https://github.com/Skyost/Raspink/raw/master/screenshot.png" width="40%"> <img src="https://github.com/Skyost/Raspink/raw/master/preview.gif" width="40%">
 
 I've been using it for my personal needs since the very start of 2022, and I've decided to share it.
 As it is a personal utility, you may have to [customize it](#Customization) in order to suit your needs.
