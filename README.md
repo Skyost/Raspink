@@ -33,9 +33,11 @@ This utility depends on the following Python libraries :
 * [icalendar](https://pypi.org/project/icalendar/).
 * [recurring-ical-events](https://pypi.org/project/recurring-ical-events/).
 
-You'll have to install of them first. Next, clone the current repository, using something like this :
+You'll have to install of them first.
 
 ### Clone the repository
+
+Clone the current repository, using something like this :
 
 ```shell
 git clone https://github.com/Skyost/Raspink
@@ -43,7 +45,7 @@ git clone https://github.com/Skyost/Raspink
 
 ### Install and set up the `waveshare_epd` Python dependency
 
-You must then copy the content of the [`waveshare_epd` folder](https://github.com/waveshare/e-Paper/tree/master/RaspberryPi_JetsonNano/python/lib/waveshare_epd)
+You must copy the content of the [`waveshare_epd` folder](https://github.com/waveshare/e-Paper/tree/master/RaspberryPi_JetsonNano/python/lib/waveshare_epd)
 into the newly created Raspink folder.
 This library has been made for the [Waveshare 7.5" EPD](https://www.waveshare.com/7.5inch-e-paper-hat.htm). If you plan
 to use it with another reader, you must replace the `epd7in5` references to `whatever_epd_you_are_using` in the `display/epd.py` file.
@@ -76,7 +78,7 @@ Start Raspink by running the following command in the Raspink folder :
 python ./main.py
 ```
 
-You can combine it with `nohup` to leave it active in the background.
+With this command, the content is refreshed every five minutes. You can combine it with `nohup` to leave it active in the background.
 Good for you : I've already done the work !
 
 ```shell
