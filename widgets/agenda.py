@@ -3,8 +3,7 @@ import requests
 import datetime
 import recurring_ical_events
 
-from icalendar import Calendar, Event
-from hashlib import md5
+from icalendar import Calendar
 from PIL import ImageDraw
 from fonts.fonts import *
 from widgets.widget import Widget
@@ -68,7 +67,7 @@ class AgendaWidget(Widget):
             formatted_date_text = word_wrap(draw, date.strftime('%d/%m/%Y'), self.width)
             (text_width, text_height) = draw.textsize(formatted_date_text, font=text_font)
             if self.height > current_y + text_height:
-                draw.text((0, current_y), formatted_date_text, font=text_font, fill='black')
+                date_y = current_y
                 current_y += text_height + 6
                 events_to_draw = len(events)
                 events_drawn = 0
@@ -85,6 +84,8 @@ class AgendaWidget(Widget):
                         draw.text((spacing, current_y), text, font=text_font, fill='black')
                         current_y += text_height + 6
                         events_drawn += 1
-                if events_drawn < events_to_draw:
-                    draw.text(((self.width - ellipsis_width) / 2, self.height - ellipsis_height), ellipsis_text,
-                              font=text_font, fill='black')
+                if events_drawn > 0:
+                    draw.text((0, date_y), formatted_date_text, font=text_font, fill='black')
+                    if events_drawn < events_to_draw:
+                        draw.text(((self.width - ellipsis_width) / 2, self.height - ellipsis_height), ellipsis_text,
+                                  font=text_font, fill='black')

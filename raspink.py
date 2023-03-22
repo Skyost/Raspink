@@ -52,9 +52,10 @@ class Raspink(object):
     def _append_widget(self, x: int, y: int, widget: Widget):
         self.widgets.append({'x': x, 'y': y, 'widget': widget})
 
-    def start(self):
+    def start(self, schedule: bool = True):
         self.refresh()
-        self.scheduler.start()
+        if schedule:
+            self.scheduler.start()
 
     def stop(self):
         self.scheduler.stop()
