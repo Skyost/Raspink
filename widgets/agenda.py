@@ -43,12 +43,17 @@ class AgendaWidget(Widget):
 
     def _paint(self, draw: ImageDraw):
         current_y = 0
+        icon_font_small = icon_font.font_variant(size=30)
+        icon_font_big = icon_font.font_variant(size=34)
 
         # Title :
+        icon = u'\uf073'
         title = 'Agenda'
+        (icon_width, icon_height) = draw.textsize(icon, font=icon_font_small)
         (title_width, title_height) = draw.textsize(title, font=title_font)
-        draw.text((0, current_y), title, font=title_font, fill='black')
-        current_y += title_height + 8
+        draw.text((0, current_y), icon, font=icon_font_big, fill='black')
+        draw.text((icon_width + 16, current_y - 4), title, font=title_font, fill='black')
+        current_y += max(icon_height, title_height) + 8
 
         # If no task :
         if len(self.data) == 0:
