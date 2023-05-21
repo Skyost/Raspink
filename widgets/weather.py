@@ -14,11 +14,12 @@ class WeatherWidget(Widget):
 
     def _fetch(self):
         data = []
+        location = requests.get('http://ip-api.com/json/').json()
         response = requests.get(
             'https://api.openweathermap.org/data/2.5/onecall',
             params={
-                'lat': 49.1858,
-                'lon': -0.3591,
+                'lat': location['lat'],
+                'lon': location['lon'],
                 'units': 'metric',
                 'lang': 'fr',
                 'exclude': '[minutely,hourly,alerts]',
