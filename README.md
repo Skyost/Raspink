@@ -110,7 +110,6 @@ They have two main methods :
 You may be particularly interested in customizing the followings :
 
 * _News_ (`news.py`) : The RSS feed URL is hardcorded. Change it here.
-* _Weather_ (`weather.py`) : You'll need to update the latitude and the longitude according to your current location.
 * _Word of the day_ (`word_of_the_day.py`) : The RSS feed URL is also hardcorded here.
 
 The method `_append_default_widgets()` of the file `raspink.py` handles the displaying and
