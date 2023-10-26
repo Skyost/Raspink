@@ -49,21 +49,21 @@ class WeatherWidget(Widget):
 
         # Today's weather :
         temperature = f'{str(round(today.temperature))}°'
-        (icon_width, icon_height) = draw.textsize(today.icon, font=weather_font_small)
-        (text_width, text_height) = draw.textsize(temperature, font=title_font)
+        (_, _, icon_width, icon_height) = draw.textbbox(xy=(0, 0), text=today.icon, font=weather_font_small)
+        (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=temperature, font=title_font)
         draw.text((0, current_y), today.icon, font=weather_font_big, fill='black')
         draw.text((icon_width + 16, current_y - 4), temperature, font=title_font, fill='black')
         current_y += max(icon_height, text_height) + 6
 
         # Today's feels like :
         feels_like = f'Ressenti : {str(round(today.temperature_feels_like))}°'
-        (text_width, text_height) = draw.textsize(feels_like, font=text_font)
+        (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=feels_like, font=text_font)
         draw.text((0, current_y), feels_like, font=text_font, fill='black')
         current_y += text_height + 4
 
         # Today's min & max :
         min_max = f'{str(round(today.temperature_min))}°  |  {str(round(today.temperature_max))}°'
-        (text_width, text_height) = draw.textsize(min_max, font=text_font)
+        (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=min_max, font=text_font)
         draw.text((0, current_y), min_max, font=text_font, fill='black')
         current_y += text_height + 6
 
@@ -75,21 +75,21 @@ class WeatherWidget(Widget):
             weather = self.data[i + 1]
 
             # The icon :
-            (icon_width, icon_height) = draw.textsize(weather.icon, font=weather_font_small)
+            (_, _, icon_width, icon_height) = draw.textbbox(xy=(0, 0), text=weather.icon, font=weather_font_small)
             draw.text((current_x, current_y), weather.icon, font=weather_font_small, fill='black')
             text_y = current_y
             current_x += icon_width + 6
 
             # The day of week :
             day_of_week = weather.date.strftime('%a')
-            (text_width, text_height) = draw.textsize(day_of_week, font=text_font)
+            (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=day_of_week, font=text_font)
             draw.text((current_x, text_y), day_of_week, font=text_font, fill='black')
             text_y += text_font.size + 2
             max_width = max(max_width, current_x + text_width)
 
             # The temperature :
             temperature = f'{round(weather.temperature)}°'
-            (text_width, text_height) = draw.textsize(temperature, font=text_font_small)
+            (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=temperature, font=text_font_small)
             draw.text((current_x, text_y), temperature, font=text_font_small, fill='black')
             max_width = max(max_width, current_x + text_width)
 
@@ -110,8 +110,8 @@ class WeatherWidget(Widget):
         for i in range(len(texts)):
             text = texts[i]
             spacing = 6
-            (icon_width, icon_height) = draw.textsize(u'\uf051', font=weather_font_small)
-            (text_width, text_height) = draw.textsize(text['content'], font=text_font)
+            (_, _, icon_width, icon_height) = draw.textbbox(xy=(0, 0), text=u'\uf051', font=weather_font_small)
+            (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=text['content'], font=text_font)
             total_width = icon_width + text_width + spacing
             current_x = max_width - total_width
             current_y = i * (max(icon_height, text_height))

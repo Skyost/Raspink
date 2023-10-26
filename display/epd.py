@@ -1,5 +1,3 @@
-import time
-
 from waveshare_epd import epd7in5
 from display.display import Display
 from PIL import Image

@@ -33,7 +33,11 @@ This utility depends on the following Python libraries :
 * [icalendar](https://pypi.org/project/icalendar/).
 * [recurring-ical-events](https://pypi.org/project/recurring-ical-events/).
 
-You'll have to install of them first.
+You'll have to install of them first. You can do it manually or run the following command :
+
+```shell
+pip install -r requirements.txt
+```
 
 ### Clone the repository
 

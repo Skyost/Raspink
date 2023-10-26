@@ -19,7 +19,7 @@ class WordOfTheDayWidget(Widget):
         current_y = 0
 
         # Word :
-        (text_width, text_height) = draw.textsize(self.data['title'], font=title_font)
+        (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=self.data['title'], font=title_font)
         draw.text((0, current_y), '> ' + self.data['title'], font=title_font, fill='black')
         current_y += text_height + 8
 

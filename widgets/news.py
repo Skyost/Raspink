@@ -26,13 +26,13 @@ class NewsWidget(Widget):
 
         # Today's date :
         day_of_week = now.strftime('%A')
-        (text_width, text_height) = draw.textsize(day_of_week, font=text_font)
+        (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=day_of_week, font=text_font)
         draw.text((0, current_y), day_of_week, font=text_font, fill='black')
         current_y += text_height + 2
         day_month = now.strftime('%d %B')
         if day_month[0] == '0':
             day_month = day_month[1:]
-        (text_width, text_height) = draw.textsize(day_month, font=title_font)
+        (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=day_month, font=title_font)
         draw.text((0, current_y), day_month, font=title_font, fill='black')
         current_y += text_height
 
@@ -49,7 +49,7 @@ class NewsWidget(Widget):
         for entry in self.data:
             spacing = 24
             text = word_wrap(draw, entry.title, self.width - spacing)
-            (text_width, text_height) = draw.textsize(text, font=text_font)
+            (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=text, font=text_font)
             if self.height > current_y + text_height:
                 draw.text((0, current_y), '—', font=text_font, fill='black')
                 draw.text((spacing, current_y), text, font=text_font, fill='black')

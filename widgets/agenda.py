@@ -49,8 +49,8 @@ class AgendaWidget(Widget):
         # Title :
         icon = u'\uf073'
         title = 'Agenda'
-        (icon_width, icon_height) = draw.textsize(icon, font=icon_font_small)
-        (title_width, title_height) = draw.textsize(title, font=title_font)
+        (_, _, icon_width, icon_height) = draw.textbbox(xy=(0, 0), text=icon, font=icon_font_small)
+        (_, _, title_width, title_height) = draw.textbbox(xy=(0, 0), text=title, font=title_font)
         draw.text((0, current_y), icon, font=icon_font_big, fill='black')
         draw.text((icon_width + 16, current_y - 4), title, font=title_font, fill='black')
         current_y += max(icon_height, title_height) + 8
@@ -58,19 +58,19 @@ class AgendaWidget(Widget):
         # If no task :
         if len(self.data) == 0:
             text = 'Rien à faire'
-            (text_width, text_height) = draw.textsize(text, font=text_font_italic)
+            (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=text, font=text_font_italic)
             draw.text(((self.width - text_width) / 2, (self.height - text_height) / 2), text, font=text_font_italic,
                       fill='black')
             return
 
         # Ellipsis size :
         ellipsis_text = '...'
-        (ellipsis_width, ellipsis_height) = draw.textsize(ellipsis_text, font=text_font)
+        (_, _, ellipsis_width, ellipsis_height) = draw.textbbox(xy=(0, 0), text=ellipsis_text, font=text_font)
 
         # Agenda content :
         for date, events in self.data.items():
             formatted_date_text = word_wrap(draw, date.strftime('%d/%m/%Y'), self.width)
-            (text_width, text_height) = draw.textsize(formatted_date_text, font=text_font)
+            (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=formatted_date_text, font=text_font)
             if self.height > current_y + text_height:
                 date_y = current_y
                 current_y += text_height + 6
@@ -82,7 +82,7 @@ class AgendaWidget(Widget):
                     if isinstance(event['start'], datetime.datetime):
                         event_name = event['start'].strftime('%H:%M') + '  ' + event_name
                     text = word_wrap(draw, event_name, self.width - spacing)
-                    (text_width, text_height) = draw.textsize(text, font=text_font)
+                    (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=text, font=text_font)
                     if self.height > current_y + text_height \
                             or (events_drawn >= events_to_draw - 1 and self.height > current_y + text_height):
                         draw.text((0, current_y), '—', font=text_font, fill='black')

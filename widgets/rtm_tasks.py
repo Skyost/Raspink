@@ -35,26 +35,26 @@ class RTMTasksWidget(Widget):
 
         # Title :
         title = 'À faire'
-        (title_width, title_height) = draw.textsize(title, font=title_font)
+        (_, _, title_width, title_height) = draw.textbbox(xy=(0, 0), text=title, font=title_font)
         draw.text((0, current_y), title, font=title_font, fill='black')
         current_y += title_height + 8
 
         # If no task :
         if len(self.data) == 0:
             text = 'Aucune tâche. Bravo Hugo !'
-            (text_width, text_height) = draw.textsize(text, font=text_font_italic)
+            (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=text, font=text_font_italic)
             draw.text(((self.width - text_width) / 2, (self.height - text_height) / 2), text, font=text_font_italic, fill='black')
             return
 
         # Subtitle :
         subtitle = f'{len(self.data)} ' + ('tâches' if len(self.data) > 1 else 'tâche')
-        (subtitle_width, subtitle_height) = draw.textsize(subtitle, font=text_font_italic_small)
+        (_, _, subtitle_width, subtitle_height) = draw.textbbox(xy=(0, 0), text=subtitle, font=text_font_italic_small)
         draw.text((0, current_y), subtitle, font=text_font_italic_small, fill='black')
         current_y += subtitle_height + 8
 
         # Ellipsis size :
         ellipsis_text = '...'
-        (ellipsis_width, ellipsis_height) = draw.textsize(ellipsis_text, font=text_font)
+        (_, _, ellipsis_width, ellipsis_height) = draw.textbbox(xy=(0, 0), text=ellipsis_text, font=text_font)
 
         # Tasks :
         tasks_to_draw = len(self.data)
@@ -62,7 +62,7 @@ class RTMTasksWidget(Widget):
         for task in self.data:
             spacing = 24
             text = word_wrap(draw, task, self.width - spacing)
-            (text_width, text_height) = draw.textsize(text, font=text_font)
+            (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=text, font=text_font)
             if self.height - ellipsis_height > current_y + text_height \
                     or (tasks_drawn >= tasks_to_draw - 1 and self.height > current_y + text_height):
                 draw.text((0, current_y), '—', font=text_font, fill='black')

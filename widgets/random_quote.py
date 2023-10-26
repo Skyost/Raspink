@@ -23,13 +23,13 @@ class RandomQuoteWidget(Widget):
         current_y = 0
 
         # Quotation mark :
-        (quotation_width, quotation_height) = draw.textsize('"', font=icon_font_small)
+        (_, _, quotation_width, quotation_height) = draw.textbbox(xy=(0, 0), text='"', font=icon_font_small)
         draw.text((0, 8), u'\uf10d', font=icon_font_small, fill='black')
         current_x = quotation_width + 18
 
         # Quote :
         text = word_wrap(draw, self.data['content'], self.width - current_x)
-        (text_width, text_height) = draw.textsize(text, font=text_font_italic)
+        (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=text, font=text_font_italic)
         draw.text((current_x, current_y), text, font=text_font_italic, fill='black')
         current_y += text_height + 8
 

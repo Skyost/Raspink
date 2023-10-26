@@ -57,12 +57,12 @@ openweathermap_font_map = {
 
 def word_wrap(draw, text, max_width, font=text_font):
     remaining = max_width
-    space_width, space_height = draw.textsize(' ', font=font)
+    _, _, space_width, space_height = draw.textbbox(xy=(0, 0), text=' ', font=font)
     # use this list as a stack, push/popping each line
     output_text = []
     # split on whitespace...
     for word in text.split(None):
-        word_width, word_height = draw.textsize(word, font=font)
+        _, _, word_width, word_height = draw.textbbox(xy=(0, 0), text=word, font=font)
         if word_width + space_width > remaining:
             output_text.append(word)
             remaining = max_width - word_width

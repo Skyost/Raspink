@@ -26,13 +26,13 @@ class InfoWidget(Widget):
 
         # Wifi name :
         icon = u'\uf1eb'
-        (icon_width, icon_height) = draw.textsize(icon, font=icon_font_tiny)
+        (_, _, icon_width, icon_height) = draw.textbbox(xy=(0, 0), text=icon, font=icon_font_tiny)
         draw.text((0, 2), icon, font=icon_font_tiny, fill='black')
         draw.text((icon_width + 6, 0), self.data.wifi, font=text_font_tiny, fill='black')
 
         # Last updated :
         text = self.data.date.strftime('%d/%m/%Y %H:%M:%S')
-        (text_width, text_height) = draw.textsize(text, font=text_font_italic_tiny)
+        (_, _, text_width, text_height) = draw.textbbox(xy=(0, 0), text=text, font=text_font_italic_tiny)
         draw.text((self.width - text_width, 0), text, font=text_font_italic_tiny, fill='black')
 
 
