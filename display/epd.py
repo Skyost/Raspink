@@ -1,4 +1,4 @@
-from waveshare_epd import epd7in5
+from waveshare_epd import epd7in5_V2
 from display.display import Display
 from PIL import Image
 
@@ -6,7 +6,7 @@ from PIL import Image
 class EPDDisplay(Display):
 
     def __init__(self):
-        self.epd = epd7in5.EPD()
+        self.epd = epd7in5_V2.EPD()
         super().__init__(self.epd.width, self.epd.height)
 
     def display(self, image: Image):
