@@ -39,6 +39,10 @@ class AgendaWidget(Widget):
                 'start': event.decoded('DTSTART'),
                 'end': event.decoded('DTEND'),
             })
+            self.data[key] = sorted(
+                date_events,
+                key=lambda x: (datetime.datetime.combine(x['start'], datetime.time(23, 0)) if isinstance(x['start'], datetime.date) else x['start'], x['name'])
+            )
         self.data = dict(sorted(self.data.items()))
 
     def _paint(self, draw: ImageDraw):
