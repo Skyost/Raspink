@@ -12,7 +12,7 @@ class RandomQuoteWidget(Widget):
 
     def _fetch(self):
         self.data = requests.get(
-            'https://api.quotable.io/random',
+            'http://api.quotable.io/random',
             params={
                 'maxLength': '100'
             },
