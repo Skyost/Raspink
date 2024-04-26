@@ -16,7 +16,7 @@ class WeatherWidget(Widget):
         data = []
         location = requests.get('http://ip-api.com/json/').json()
         response = requests.get(
-            'https://api.openweathermap.org/data/2.5/onecall',
+            'https://api.openweathermap.org/data/3.0/onecall',
             params={
                 'lat': location['lat'],
                 'lon': location['lon'],
