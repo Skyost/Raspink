@@ -14,16 +14,16 @@ class WeatherWidget(Widget):
 
     def _fetch(self):
         data = []
-        location = requests.get('http://ip-api.com/json/').json()
+        location = requests.get('https://ipapi.co/json/').json()
         response = requests.get(
             'https://api.openweathermap.org/data/3.0/onecall',
             params={
-                'lat': location['lat'],
-                'lon': location['lon'],
+                'lat': location['latitude'],
+                'lon': location['longitude'],
                 'units': 'metric',
                 'lang': 'fr',
                 'exclude': '[minutely,hourly,alerts]',
-                'APPID': os.environ['OPENWEATHERMAP_KEY']
+                'appid': os.environ['OPENWEATHERMAP_KEY']
             }
         ).json()
         current = Weather(response['current'])
