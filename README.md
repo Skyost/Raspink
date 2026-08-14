@@ -59,7 +59,8 @@ to use it with another reader, you must replace the `epd7in5` references to `wha
 Create a `.env` file in the Raspink folder. Use it like this :
 
 ```properties
-OPENWEATHERMAP_KEY=your_key
+WEATHER_LATITUDE=your_latitude
+WEATHER_LONGITUDE=your_longitude
 REMEMBERTHEMILK_KEY=your_key
 REMEMBERTHEMILK_SECRET=your_secret
 REMEMBERTHEMILK_TOKEN=your_token
@@ -68,7 +69,7 @@ ICAL_URL=your_ical_url
 
 Here's a little documentation :
 
-* `OPENWEATHERMAP_KEY` : Put your [OpenWeatherMap API key](https://openweathermap.org/appid) here. It will allow you to fetch and display the current weather.
+* `WEATHER_LATITUDE` and `WEATHER_LONGITUDE` : Optional. Put the coordinates of the place you want the weather for. If left empty, they will be guessed from your IP address using [ipapi.co](https://ipapi.co).
 * `REMEMBERTHEMILK_KEY` : Put your [RememberTheMilk API key](https://www.rememberthemilk.com/services/api/) here. It will allow you to fetch and display your RTM tasks.
 * `REMEMBERTHEMILK_SECRET` : Put your [RememberTheMilk shared secret](https://www.rememberthemilk.com/services/api/authentication.rtm) here. Works with `REMEMBERTHEMILK_KEY`.
 * `REMEMBERTHEMILK_TOKEN` : Put your [RememberTheMilk authentication token](https://www.rememberthemilk.com/services/api/authentication.rtm) here. Works with `REMEMBERTHEMILK_KEY`.

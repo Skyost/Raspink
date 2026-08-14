@@ -24,34 +24,37 @@ icon_font = ImageFont.truetype(
     './fonts/fontawesome.ttf', 24
 )
 
-openweathermap_font_map = {
-    # Clear sky :
-    '01d': 'f00d',
-    '01n': 'f02e',
-    # Few clouds :
-    '02d': 'f002',
-    '02n': 'f086',
-    # Scattered clouds :
-    '03d': 'f041',
-    '03n': 'f041',
-    # Broken clouds :
-    '04d': 'f013',
-    '04n': 'f013',
-    # Shower rain :
-    '09d': 'f009',
-    '09n': 'f037',
-    # Rain :
-    '10d': 'f019',  # 'f008',
-    '10n': 'f019',  # 'f036',
-    # Thunderstorm :
-    '11d': 'f01e',  # 'f010',
-    '11n': 'f01e',  # 'f03b',
-    # Snow :
-    '13d': 'f01b',  # 'f00a',
-    '13n': 'f01b',  # 'f038',
-    # Mist :
-    '50d': 'f003',
-    '50n': 'f04a',
+# Maps Open-Meteo WMO weather codes to (day icon, night icon) glyphs of `weathericons.ttf`.
+# See https://open-meteo.com/en/docs#weathervariables for the WMO code list.
+open_meteo_font_map = {
+    0: ('f00d', 'f02e'),  # Clear sky
+    1: ('f00d', 'f02e'),  # Mainly clear
+    2: ('f002', 'f086'),  # Partly cloudy
+    3: ('f013', 'f013'),  # Overcast
+    45: ('f003', 'f04a'),  # Fog
+    48: ('f003', 'f04a'),  # Depositing rime fog
+    51: ('f019', 'f019'),  # Light drizzle
+    53: ('f019', 'f019'),  # Moderate drizzle
+    55: ('f019', 'f019'),  # Dense drizzle
+    56: ('f019', 'f019'),  # Light freezing drizzle
+    57: ('f019', 'f019'),  # Dense freezing drizzle
+    61: ('f019', 'f019'),  # Slight rain
+    63: ('f019', 'f019'),  # Moderate rain
+    65: ('f019', 'f019'),  # Heavy rain
+    66: ('f019', 'f019'),  # Light freezing rain
+    67: ('f019', 'f019'),  # Heavy freezing rain
+    71: ('f01b', 'f01b'),  # Slight snow fall
+    73: ('f01b', 'f01b'),  # Moderate snow fall
+    75: ('f01b', 'f01b'),  # Heavy snow fall
+    77: ('f01b', 'f01b'),  # Snow grains
+    80: ('f009', 'f037'),  # Slight rain showers
+    81: ('f009', 'f037'),  # Moderate rain showers
+    82: ('f009', 'f037'),  # Violent rain showers
+    85: ('f01b', 'f01b'),  # Slight snow showers
+    86: ('f01b', 'f01b'),  # Heavy snow showers
+    95: ('f01e', 'f01e'),  # Thunderstorm
+    96: ('f01e', 'f01e'),  # Thunderstorm with slight hail
+    99: ('f01e', 'f01e'),  # Thunderstorm with heavy hail
 }
 
 
